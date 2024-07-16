@@ -1,16 +1,17 @@
-package main
+package lexorank
 
 import (
+	"errors"
 	"fmt"
 	"math"
-	"time"
+	"strconv"
 )
 
 const (
-	lexoSize = 10
 	MinLexo  = '0'
-	MidLexo  = 'U'
 	MaxLexo  = 'z'
+	MidLexo  = (MinLexo + MaxLexo) / 2
+	lexoSize = MaxLexo - MinLexo + 1
 )
 
 func genLexoCodes(data string) []int64 {
@@ -63,56 +64,50 @@ func genRankByDiff(firstRank string, diff int64) string {
 	return newRank
 }
 
-func GetRankBetween(firstRank string, secondRank string) string {
-	for len(firstRank) != len(secondRank) {
-		if len(firstRank) > len(secondRank) {
-			secondRank += string(MinLexo)
-		} else {
-			firstRank += string(MinLexo)
+func validateRank(rank string) bool {
+	for _, ch := range []byte(rank) {
+		if ch < MinLexo || ch > MaxLexo {
+			return false
 		}
 	}
-	diff := calcTotalDiff(firstRank, secondRank)
+	return true
+}
+
+func Rank(prev string, next string) (string, error) {
+	for len(prev) != len(next) {
+		if len(prev) > len(next) {
+			next += string(MinLexo)
+		} else {
+			prev += string(MinLexo)
+		}
+	}
+	if !validateRank(prev) || !validateRank(next) {
+		return "", errors.New("invalid lexorank")
+	}
+	if prev > next {
+		return "", errors.New("prev rank is greater than next rank")
+	}
+	diff := calcTotalDiff(prev, next)
 	newRank := ""
 	if diff <= 1 {
-		newRank = firstRank + string(MidLexo)
+		newRank = prev + string(MidLexo)
 	} else {
 		diff = diff / 2
-		newRank = genRankByDiff(firstRank, diff)
+		newRank = genRankByDiff(prev, diff)
 	}
-	return newRank
+	return newRank, nil
 }
 
-func estimateEndRank(taskNumber int64, startRank string) string {
-	endRank := ""
-	for i := 0; i < len(startRank); i++ {
-		endRank += string(MaxLexo)
+func RankN(prev, next string, n int) ([]string, error) {
+	mid, err := Rank(prev, next)
+	if err != nil {
+		return nil, err
 	}
-	for diff := int64(0); diff <= taskNumber; diff = calcTotalDiff(startRank, endRank) {
-		startRank += string(MinLexo)
-		endRank += string(MaxLexo)
+	suffixRankLen := len(strconv.Itoa(n))
+	suffixRankFormat := fmt.Sprintf("%%0%dd", suffixRankLen)
+	ranks := make([]string, 0, n)
+	for i := 0; i < n; i++ {
+		ranks = append(ranks, mid+fmt.Sprintf(suffixRankFormat, i))
 	}
-	return endRank
-}
-
-func generateRanks(taskNumber int64, startRank string) []string {
-	endRank := estimateEndRank(taskNumber, startRank)
-	for len(startRank) != len(endRank) {
-		startRank += string(MinLexo)
-	}
-	totalDiff := calcTotalDiff(startRank, endRank)
-	diff := totalDiff / (taskNumber + 1)
-	ranks := make([]string, 0, taskNumber)
-	for rank := genRankByDiff(startRank, diff); int64(len(ranks)) < taskNumber; rank = genRankByDiff(rank, diff) {
-		ranks = append(ranks, rank)
-	}
-	return ranks
-}
-
-func main() {
-	startTime := time.Now()
-	ranks := generateRanks(100000, "0")
-	endTime := time.Now()
-	fmt.Printf("%+v\n", ranks)
-	fmt.Printf("%d\n", len(ranks))
-	fmt.Printf("%d", endTime.Sub(startTime).Milliseconds())
+	return ranks, nil
 }
