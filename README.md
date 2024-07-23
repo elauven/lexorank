@@ -94,7 +94,3 @@ Contributions are welcome! Please open an issue or submit a pull request on GitH
 ## License
 
 This library is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
----
-
-Feel free to modify the README as needed and replace placeholders like `danghh-1998` with actual values.
