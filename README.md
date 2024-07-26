@@ -2,6 +2,7 @@
 
 [<img src="https://github.com/danghh-1998/lexorank/actions/workflows/build.yml/badge.svg">](https://github.com/danghh-1998/lexorank/actions)
 [<img src="https://pkg.go.dev/badge/danghh-1998/lexorank">](https://pkg.go.dev/github.com/danghh-1998/lexorank)
+[![Go Report Card](https://goreportcard.com/badge/github.com/danghh-1998/lexorank)](https://goreportcard.com/report/github.com/danghh-1998/lexorank)
 
 This Golang library provides utilities to generate LexoRank codes, which are used for ordering items in a way that allows efficient insertion of new items between existing ones. The library offers two main functions:
 
