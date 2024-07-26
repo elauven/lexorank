@@ -1,8 +1,8 @@
-# Contributing to LexoRank Generator Library
+# Contributing to Lexorank Generator Library
 
 First off, thanks for taking the time to contribute! 🎉
 
-The following is a set of guidelines for contributing to LexoRank Generator Library. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+The following is a set of guidelines for contributing to Lexorank Generator Library. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
 ## Table of Contents
 
@@ -17,13 +17,13 @@ The following is a set of guidelines for contributing to LexoRank Generator Libr
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by the LexoRank Generator Library Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to [danghh-1998](mailto:hoanghaidang1998@gmail.com?subject=[GitHub]%20LexoRank%20Generator%20Library).
+This project and everyone participating in it is governed by the Lexorank Generator Library Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to [danghh-1998](mailto:hoanghaidang1998@gmail.com?subject=[GitHub]%20Lexorank%20Generator%20Library).
 
 ## How Can I Contribute?
 
 ### Reporting Bugs
 
-This section guides you through submitting a bug report for LexoRank Generator Library. Following these guidelines helps maintainers and the community understand your report, reproduce the behavior, and find related reports.
+This section guides you through submitting a bug report for Lexorank Generator Library. Following these guidelines helps maintainers and the community understand your report, reproduce the behavior, and find related reports.
 
 #### Before Submitting A Bug Report
 
@@ -45,7 +45,7 @@ Bugs are tracked as [GitHub issues](https://github.com/danghh-1998/lexorank/issu
 
 The process described here has several goals:
 
-- Maintain LexoRank Generator Library's quality
+- Maintain Lexorank Generator Library's quality
 - Fix problems that are important to users
 - Engage the community in working toward the best possible product
 
@@ -81,4 +81,4 @@ The process described here has several goals:
 - Ensure all public methods and classes are documented with appropriate comments.
 - Write clear and concise documentation for any new features.
 
-Thanks for contributing to LexoRank Generator Library!
+Thanks for contributing to Lexorank Generator Library!
