@@ -1,3 +1,3 @@
-module lexorank-golang
+module lexorank
 
 go 1.19

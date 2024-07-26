@@ -87,6 +87,9 @@ func Rank(prev string, next string) (string, error) {
 	if prev > next {
 		return "", errors.New("prev rank is greater than next rank")
 	}
+	if prev == next {
+		return prev, nil
+	}
 	diff := calcTotalDiff(prev, next)
 	newRank := ""
 	if diff <= 1 {
