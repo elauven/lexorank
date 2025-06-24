@@ -1,3 +1,3 @@
-module github.com/danghh-1998/lexorank
+module github.com/elauven/lexorank
 
 go 1.19
