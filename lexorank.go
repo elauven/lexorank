@@ -74,6 +74,12 @@ func validateRank(rank string) bool {
 }
 
 func Rank(prev string, next string) (string, error) {
+	if prev == "" {
+		prev = string(MinLexo)
+	}
+	if next == "" {
+		next = string(MaxLexo)
+	}
 	for len(prev) != len(next) {
 		if len(prev) > len(next) {
 			next += string(MinLexo)
